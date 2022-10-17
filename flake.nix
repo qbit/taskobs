@@ -10,6 +10,9 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
     in {
+      overlay = final: prev: {
+        taskobs = self.packages.${prev.system}.taskobs;
+      };
       packages = forAllSystems (system:
         let pkgs = nixpkgsFor.${system};
         in {
