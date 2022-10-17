@@ -8,6 +8,8 @@ use v5.32;
 
 use JSON qw( from_json );
 
+my $VERSION = 'v0.0.2';
+
 my $outputFile = shift || '/home/qbit/Brain/TaskWarrior.md';
 my $tasks      = from_json(`task export`);
 my $date       = strftime "%Y-%m-%d", localtime;

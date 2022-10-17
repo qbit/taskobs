@@ -17,11 +17,13 @@
       packages = forAllSystems (system:
         let pkgs = nixpkgsFor.${system};
         in {
-          taskobs = pkgs.stdenv.mkDerivation {
+          taskobs = pkgs.perlPackages.buildPerlPackage {
             pname = "taskobs";
             version = "v0.0.2";
             src = ./.;
             buildInputs = with pkgs; [ perl perlPackages.JSON ];
+
+            outputs = [ "out" "dev" ];
 
             installPhase = ''
               mkdir -p $out/bin
