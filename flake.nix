@@ -20,8 +20,7 @@
             pname = "taskobs";
             version = "v0.0.1";
             src = ./.;
-            buildInputs = with pkgs.perlPackages; [ perl PerlTidy ];
-            nativeBuildInputs = with pkgs.perlPackages; [ perl JSON ];
+            buildInputs = with pkgs.perlPackages; [ perl JSON ];
 
             installPhase = ''
               mkdir -p $out/bin
@@ -39,8 +38,7 @@
               PS1='\u@\h:\@; '
               echo "Perl `${pkgs.perl}/bin/perl --version`"
             '';
-            buildInputs = with pkgs.perlPackages; [ PerlTidy ];
-            nativeBuildInputs = with pkgs.perlPackages; [ perl JSON ];
+            buildInputs = with pkgs.perlPackages; [ perl PerlTidy JSON ];
           };
         });
     };
