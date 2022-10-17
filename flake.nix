@@ -1,5 +1,6 @@
 {
-  description = "taskobs: a tool to export taskwarrior info into an Obsidian page";
+  description =
+    "taskobs: a tool to export taskwarrior info into an Obsidian page";
 
   inputs.nixpkgs.url = "nixpkgs/nixos-22.05";
 
@@ -18,9 +19,9 @@
         in {
           taskobs = pkgs.stdenv.mkDerivation {
             pname = "taskobs";
-            version = "v0.0.1";
+            version = "v0.0.2";
             src = ./.;
-            buildInputs = with pkgs.perlPackages; [ perl JSON ];
+            buildInputs = with pkgs; [ perl perlPackages.JSON ];
 
             installPhase = ''
               mkdir -p $out/bin
@@ -38,7 +39,11 @@
               PS1='\u@\h:\@; '
               echo "Perl `${pkgs.perl}/bin/perl --version`"
             '';
-            buildInputs = with pkgs.perlPackages; [ perl PerlTidy JSON ];
+            buildInputs = with pkgs; [
+              perl
+              perlPackages.PerlTidy
+              perlPackages.JSON
+            ];
           };
         });
     };
