@@ -19,9 +19,9 @@
         in {
           taskobs = pkgs.perlPackages.buildPerlPackage {
             pname = "taskobs";
-            version = "v0.0.2";
+            version = "v0.0.3";
             src = ./.;
-            buildInputs = with pkgs; [ perl perlPackages.JSON ];
+            buildInputs = with pkgs; [ perl perlPackages.JSON taskwarrior ];
 
             outputs = [ "out" "dev" ];
 
